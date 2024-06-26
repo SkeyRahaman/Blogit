@@ -40,6 +40,7 @@ def post_page(request, slug):
     return render(request, 'app/post.html', context)
 
 def index(request):
+    print(request.session)
     top_post = Post.objects.all().order_by('-view_count')[:3]
     recent_post = Post.objects.all().order_by('-last_updated')[:3] 
     featured_post = Post.objects.filter(is_featured = True)
@@ -53,6 +54,7 @@ def index(request):
         if subscribe_form.is_valid:
             subscribe_form.save()
             subscribe_successful = 'Subscribe Successfully'
+            request.session['subscribed'] = True
             subscribe_form = SubscribeForm()
 
     website_info =  None
