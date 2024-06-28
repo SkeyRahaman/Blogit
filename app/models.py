@@ -46,11 +46,14 @@ class Post(models.Model):
     view_count = models.IntegerField(null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    bookmarks = models.ManyToManyField(User, related_name='bookmarks', default=True)
+    likes = models.ManyToManyField(User, related_name='likes', default=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title)
         return super(Post, self).save(*args, **kwargs)
+    
 
 
 class Comments(models.Model):
