@@ -1,15 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post,Tag, Comments, Profile, WebsiteMeta
-from .forms import CommentForm,SubscribeForm
+from .forms import CommentForm,SubscribeForm, NewUserForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.contrib.auth import login
 
 # Create your views here.
 def post_page(request, slug):
     form = CommentForm()
-
     if request.POST: 
         post_id = request.POST.get('post_id')
         post = Post.objects.get(id = post_id)
@@ -40,7 +40,6 @@ def post_page(request, slug):
     return render(request, 'app/post.html', context)
 
 def index(request):
-    print(request.session)
     top_post = Post.objects.all().order_by('-view_count')[:3]
     recent_post = Post.objects.all().order_by('-last_updated')[:3] 
     featured_post = Post.objects.filter(is_featured = True)
@@ -138,3 +137,16 @@ def contact_us(request):
         'data' : 1,
     }
     return render(request, 'app/contact_us.html', context)
+
+def register(request):
+    form = NewUserForm
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")
+    context = {
+        'form' : form,
+    }
+    return render(request, 'registration/registration.html', context)

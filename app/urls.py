@@ -11,5 +11,5 @@ urlpatterns = [
     path('all_post/', views.all_post, name='all_post_page'),
     path('about/', views.about, name='about_page'),
     path('contact/', views.contact_us, name='contact_page'),
-
+    path('accounts/register/', views.register, name='register')
 ]
