@@ -54,6 +54,9 @@ class Post(models.Model):
             self.slug = slugify(self.title)
         return super(Post, self).save(*args, **kwargs)
     
+    def __str__(self) -> str:
+        return self.title
+    
 
 
 class Comments(models.Model):
@@ -70,3 +73,9 @@ class WebsiteMeta(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     about = models.TextField()
+    name = models.CharField(max_length=200, default='Md Shakib Mondal')
+    email = models.EmailField(max_length=200, default='sakibmondal7@gmail.com')
+    linkedin = models.URLField(default='https://www.linkedin.com/in/shakib-mondal/')
+    github = models.URLField(default='https://github.com/SkeyRahaman')
+    portfolio = models.URLField(default='http://sakibmondal7.pythonanywhere.com/')
+

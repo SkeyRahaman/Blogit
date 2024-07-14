@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8op9_fv%i@m@&pla!%a1ky(f0rk9-zlb_^u3!xrt4$5^96s87n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,6 +82,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'blogit',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation

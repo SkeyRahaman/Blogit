@@ -1,1 +1,24 @@
 {% extends "layout.html" %}
+
+{% block content %}
+<!-- Contact Details -->
+<div style="margin-top: 100px; display: flex; justify-content: center;">
+    <div style="max-width: 600px; width: 100%; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <div style="padding: 20px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Contact Me</h2>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><i class="fas fa-user" style="margin-right: 10px;"></i> Name: {{ website_info.name }}</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> Email: <a href="mailto:{{ website_info.email }}">{{ website_info.email }}</a></li>
+                <li style="margin-bottom: 10px;"><i class="fab fa-linkedin" style="margin-right: 10px;"></i> LinkedIn: <a href="{{ website_info.linkedin }}" target="_blank">LinkedIn</a></li>
+                <li style="margin-bottom: 10px;"><i class="fab fa-github" style="margin-right: 10px;"></i> GitHub: <a href="{{ website_info.github }}" target="_blank">GitHub</a></li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-link" style="margin-right: 10px;"></i> Portfolio: <a href="{{ website_info.portfolio }}" target="_blank">Portfolio</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- End Contact Details -->
+
+{% endblock content %}
+

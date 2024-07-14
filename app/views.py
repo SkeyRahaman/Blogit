@@ -148,8 +148,9 @@ def about(request):
 
 # View for displaying the contact us page
 def contact_us(request):
+    website_info = WebsiteMeta.objects.first() if WebsiteMeta.objects.exists() else None
     context = {
-        'data': 1,
+        'website_info': website_info,
     }
     return render(request, 'app/contact_us.html', context)
 
