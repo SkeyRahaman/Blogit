@@ -8,11 +8,22 @@ __pycache__/
 .env
 .env.*
 
+# Django
+*.sqlite3
+
 # macOS
 .DS_Store
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Node.js
+node_modules/
 
 # IDEs
 .vscode/
 .idea/
 .venv/
 venv
+uploads/*
