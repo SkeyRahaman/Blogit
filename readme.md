@@ -15,6 +15,31 @@ This is a Django-based blog application that allows users to read posts. Users c
 
 ## Installation
 
+### Running with Docker
+
+1. **Pull the Docker image:**
+    ```sh
+    docker pull sakibmondal7/blog-it
+    ```
+
+2. **Run the Docker container:**
+    ```sh
+    docker run -d \
+      --name blog-it \
+      -e PIPELINE=local \
+      -p 8000:8000 \
+      sakibmondal7/blog-it
+    ```
+
+3. **Open your web browser and go to:**
+    ```sh
+    http://127.0.0.1:8000/
+    ```
+
+### Local Development (Optional)
+
+If you prefer to run the application locally without Docker, follow these steps:
+
 1. **Clone the repository:**
     ```sh
     git clone https://github.com/yourusername/django-blog-app.git
@@ -48,8 +73,10 @@ This is a Django-based blog application that allows users to read posts. Users c
     ```
 
 7. **Open your web browser and go to:**
-    ```
+    ```sh
     http://127.0.0.1:8000/
+    ```
+
     ```
 
 ## Project Structure
