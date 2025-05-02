@@ -42,21 +42,19 @@ class NewUserForm(UserCreationForm):
     
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
-        new = User.objects.filter(username = username)
-        if new.count():
-            raise forms.ValidationError("User already exist")
+        if User.objects.filter(username__iexact=username).exists():
+            raise forms.ValidationError("User already exist.")
         return username
     
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
-        new = User.objects.filter(email = email)
-        if new.count():
-            raise forms.ValidationError("Email already exist")
-        return email
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError("Email already exist.")
+        return email.lower()
     
     def clean_password2(self):
-        password1 = self.cleaned_data['password1'].lower()
-        password2 = self.cleaned_data['password2'].lower()
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Password Do not match.")
         return password2
