@@ -16,3 +16,8 @@ __pycache__/
 .idea/
 .venv/
 venv
+
+#db
+db.sqlite3
+Blogit/uploads/images
+
